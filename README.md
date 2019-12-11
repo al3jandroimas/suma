@@ -32,7 +32,7 @@ Para entrenar lo anterior hicimos lo siguiente:
 !CUDA_VISIBLE_DEVICES=0,1 python3 /content/suma/train.py y /content/suma/m1_shapenet.py
 
 # Generación de muestras
-!CUDA_VISIBLE_DEVICES=0 python3 /content/suma/test.samples.py
+!CUDA_VISIBLE_DEVICES=0 python3 /content/suma/test_samples.py
 
 # Generación de muestras de la priori
 !CUDA_VISIBLE_DEVICES=0 python3 /content/suma/test_samples_prior
