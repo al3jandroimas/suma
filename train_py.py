@@ -22,21 +22,21 @@ import logger
 import utils
 
 # -----------------------------------------------------------------------------
-parser = argparse.ArgumentParser()
-parser.add_argument('--config_name', type=str, required=True, help='Configuration name')
-parser.add_argument('--nr_gpu', type=int, default=1, help='How many GPUs to distribute the training across?')
-parser.add_argument('--resume', type=int, default=0, help='Resume training from a checkpoint?')
-args = parser.parse_args()
-print('input args:\n', json.dumps(vars(args), indent=4, separators=(',', ':')))
-assert args.nr_gpu == len(''.join(filter(str.isdigit, os.environ["CUDA_VISIBLE_DEVICES"])))
+#parser = argparse.ArgumentParser()
+#parser.add_argument('--config_name', type=str, required=True, help='Configuration name')
+#parser.add_argument('--nr_gpu', type=int, default=1, help='How many GPUs to distribute the training across?')
+#parser.add_argument('--resume', type=int, default=0, help='Resume training from a checkpoint?')
+#args = parser.parse_args()
+#print('input args:\n', json.dumps(vars(args), indent=4, separators=(',', ':')))
+#assert args.nr_gpu == len(''.join(filter(str.isdigit, os.environ["CUDA_VISIBLE_DEVICES"])))
 # -----------------------------------------------------------------------------
 np.random.seed(seed=42)
 tf.reset_default_graph()
 tf.set_random_seed(0)
 
 # config
-configs_dir = __file__.split('/')[-2]
-config = importlib.import_module('%s.%s' % (configs_dir, args.config_name))
+#configs_dir = __file__.split('/')[-2]
+config = importlib.import_module('%s.%s' % ('suma', args.config_name))
 if not args.resume:
     experiment_id = '%s-%s' % (args.config_name.split('.')[-1], time.strftime("%Y_%m_%d", time.localtime()))
     utils.autodir('metadata')
